@@ -199,11 +199,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Lenovo Yoga\\Desktop\\flight-planner-flightPlanner1\\FlightPlanner\\FlightPlanner\\FlightPlanner.csproj",
+      "projectUniqueName": "C:\\Users\\Lenovo Yoga\\programming\\Mans\\flight-planner\\FlightPlanner\\FlightPlanner\\FlightPlanner.csproj",
       "projectName": "FlightPlanner",
-      "projectPath": "C:\\Users\\Lenovo Yoga\\Desktop\\flight-planner-flightPlanner1\\FlightPlanner\\FlightPlanner\\FlightPlanner.csproj",
+      "projectPath": "C:\\Users\\Lenovo Yoga\\programming\\Mans\\flight-planner\\FlightPlanner\\FlightPlanner\\FlightPlanner.csproj",
       "packagesPath": "C:\\Users\\Lenovo Yoga\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Lenovo Yoga\\Desktop\\flight-planner-flightPlanner1\\FlightPlanner\\FlightPlanner\\obj\\",
+      "outputPath": "C:\\Users\\Lenovo Yoga\\programming\\Mans\\flight-planner\\FlightPlanner\\FlightPlanner\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
