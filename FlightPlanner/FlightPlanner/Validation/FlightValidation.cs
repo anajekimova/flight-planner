@@ -7,7 +7,6 @@ namespace FlightPlanner.Validation
     public class FlightValidation
     {
         public static bool IsValid(Flight flight)
-
         {
             if (flight?.To == null)
                 return false;

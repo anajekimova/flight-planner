@@ -13,7 +13,7 @@ namespace FlightPlanner.Controllers
     {
         public static object locker = new object();
 
-      [HttpGet]
+        [HttpGet]
         [Route("flights/{id}")]
         public IActionResult GetFlight(int id)
         {
