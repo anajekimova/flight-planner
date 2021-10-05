@@ -1,6 +1,10 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using System.Linq;
+using FlightPlanner.DBContext;
+using Microsoft.AspNetCore.Mvc;
 using FlightPlanner.Models;
 using FlightPlanner.Storage;
+using FlightPlanner.Validation;
+using Microsoft.EntityFrameworkCore;
 
 namespace FlightPlanner.Controllers
 {
@@ -8,12 +12,20 @@ namespace FlightPlanner.Controllers
     [ApiController]
     public class CustomerController : ControllerBase
     {
+        private FlightPlannerDbContext _context;
+
+        public CustomerController(FlightPlannerDbContext context)
+        {
+            _context = context;
+        }
+
         [Route("airports")]
         [HttpGet]
 
-        public IActionResult FindAirport(string search)
+        public IActionResult FindAirport(string search, FlightPlannerDbContext context)
         {
-            var airport = FlightStorage.SearchAirportsByCode(search);
+            var airport = FlightStorage.SearchAirportsByCode(search, _context);
+            
             if (airport.Count > 0)
                 return Ok(airport);
             return Ok();
@@ -26,7 +38,7 @@ namespace FlightPlanner.Controllers
         {
             if (searchFlightsRequest.From == searchFlightsRequest.To)
                 return BadRequest();
-            var flight = FlightStorage.SearchFlight(searchFlightsRequest);
+            var flight = FlightStorage.SearchFlight(searchFlightsRequest, _context);
             return Ok(flight);
         }
 
@@ -35,7 +47,11 @@ namespace FlightPlanner.Controllers
 
         public IActionResult GetFlight (int id)
         {
-            var flight = FlightStorage.GetById(id);
+            var flight = _context.FLights
+                .Include(a=> a.To)
+                .Include(a=> a.From)
+                .SingleOrDefault(f=> f.Id == id);
+            _context.SaveChanges();
             if (flight == null)
                 return NotFound();
             return Ok(flight);
