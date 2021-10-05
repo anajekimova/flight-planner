@@ -76,5 +76,6 @@ namespace FlightPlanner.Storage
                                              || f.DepartureTime == searchFlightsRequest.Date).ToList();
             return new PageResult(flight);
         }
+
     }
 }
