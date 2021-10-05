@@ -22,7 +22,7 @@ namespace FlightPlanner.Controllers
         [Route("airports")]
         [HttpGet]
 
-        public IActionResult FindAirport(string search, FlightPlannerDbContext context)
+        public IActionResult FindAirport(string search)
         {
             var airport = FlightStorage.SearchAirportsByCode(search, _context);
             
