@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 ﻿using System.Linq;
 using FlightPlanner.DBContext;
 using Microsoft.AspNetCore.Mvc;
@@ -5,6 +6,11 @@ using FlightPlanner.Models;
 using FlightPlanner.Storage;
 using FlightPlanner.Validation;
 using Microsoft.EntityFrameworkCore;
+=======
+﻿using Microsoft.AspNetCore.Mvc;
+using FlightPlanner.Models;
+using FlightPlanner.Storage;
+>>>>>>> origin/main
 
 namespace FlightPlanner.Controllers
 {
@@ -12,6 +18,7 @@ namespace FlightPlanner.Controllers
     [ApiController]
     public class CustomerController : ControllerBase
     {
+<<<<<<< HEAD
         private FlightPlannerDbContext _context;
 
         public CustomerController(FlightPlannerDbContext context)
@@ -19,13 +26,19 @@ namespace FlightPlanner.Controllers
             _context = context;
         }
 
+=======
+>>>>>>> origin/main
         [Route("airports")]
         [HttpGet]
 
         public IActionResult FindAirport(string search)
         {
+<<<<<<< HEAD
             var airport = FlightStorage.SearchAirportsByCode(search, _context);
             
+=======
+            var airport = FlightStorage.SearchAirportsByCode(search);
+>>>>>>> origin/main
             if (airport.Count > 0)
                 return Ok(airport);
             return Ok();
@@ -38,7 +51,11 @@ namespace FlightPlanner.Controllers
         {
             if (searchFlightsRequest.From == searchFlightsRequest.To)
                 return BadRequest();
+<<<<<<< HEAD
             var flight = FlightStorage.SearchFlight(searchFlightsRequest, _context);
+=======
+            var flight = FlightStorage.SearchFlight(searchFlightsRequest);
+>>>>>>> origin/main
             return Ok(flight);
         }
 
@@ -47,11 +64,15 @@ namespace FlightPlanner.Controllers
 
         public IActionResult GetFlight (int id)
         {
+<<<<<<< HEAD
             var flight = _context.FLights
                 .Include(a=> a.To)
                 .Include(a=> a.From)
                 .SingleOrDefault(f=> f.Id == id);
             _context.SaveChanges();
+=======
+            var flight = FlightStorage.GetById(id);
+>>>>>>> origin/main
             if (flight == null)
                 return NotFound();
             return Ok(flight);

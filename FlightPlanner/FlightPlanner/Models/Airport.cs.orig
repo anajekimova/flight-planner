@@ -4,8 +4,11 @@ namespace FlightPlanner.Models
 {
     public class Airport
     {
+<<<<<<< HEAD
         [JsonIgnore]
         public int Id { get; set; }
+=======
+>>>>>>> origin/main
         public string Country { get; set; }
         public string City { get; set; }
 
