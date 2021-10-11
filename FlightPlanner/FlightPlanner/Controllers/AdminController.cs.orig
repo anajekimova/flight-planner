@@ -1,17 +1,25 @@
+<<<<<<< HEAD
 ﻿using System.Linq;
 using FlightPlanner.DBContext;
 using Microsoft.AspNetCore.Mvc;
+=======
+﻿using Microsoft.AspNetCore.Mvc;
+>>>>>>> origin/main
 using FlightPlanner.Models;
 using FlightPlanner.Storage;
 using FlightPlanner.Validation;
 using Microsoft.AspNetCore.Authorization;
+<<<<<<< HEAD
 using Microsoft.EntityFrameworkCore;
+=======
+>>>>>>> origin/main
 
 namespace FlightPlanner.Controllers
 {
     [Authorize]
     [Route("admin-api")]
     [ApiController]
+<<<<<<< HEAD
 
     public class AdminController : ControllerBase
     {
@@ -22,6 +30,11 @@ namespace FlightPlanner.Controllers
         {
             _context = context;
         }
+=======
+    public class AdminController : ControllerBase
+    {
+        public static object locker = new object();
+>>>>>>> origin/main
 
         [HttpGet]
         [Route("flights/{id}")]
@@ -29,6 +42,7 @@ namespace FlightPlanner.Controllers
         {
             lock (locker)
             {
+<<<<<<< HEAD
                 var flight = _context.FLights
                     .Include(f => f.To)
                     .Include(f => f.From)
@@ -38,6 +52,13 @@ namespace FlightPlanner.Controllers
                     return NotFound();
 
                return Ok(flight);
+=======
+                var flight = FlightStorage.GetById(id);
+                if (flight == null)
+                    return NotFound();
+
+                return Ok(flight);
+>>>>>>> origin/main
             }
         }
 
@@ -50,12 +71,19 @@ namespace FlightPlanner.Controllers
                 if (!FlightValidation.IsValid(flight))
                     return BadRequest();
 
+<<<<<<< HEAD
                 if (FlightStorage.Exists(flight, _context))
                     return Conflict();
 
                 _context.Add(flight);
                 _context.SaveChanges();
 
+=======
+                if (FlightStorage.Exists(flight))
+                    return Conflict();
+
+                FlightStorage.AddFlight(flight);
+>>>>>>> origin/main
                 return Created("", flight);
             }
         }
@@ -66,6 +94,7 @@ namespace FlightPlanner.Controllers
         {
             lock (locker)
             {
+<<<<<<< HEAD
                 var flightDelete = _context.FLights
                     .Include(a => a.To)
                     .Include(a => a.From)
@@ -81,5 +110,12 @@ namespace FlightPlanner.Controllers
                 return Ok();
             }
         }
+=======
+                FlightStorage.DeletFlight(id);
+                return Ok();
+            }
+        }
+
+>>>>>>> origin/main
     }
 }

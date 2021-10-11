@@ -1,20 +1,33 @@
 ﻿using FlightPlanner.Models;
 using System.Collections.Generic;
 using System.Linq;
+<<<<<<< HEAD
 using FlightPlanner.DBContext;
 using Microsoft.EntityFrameworkCore;
+=======
+>>>>>>> origin/main
 using PageResult = FlightPlanner.Models.PageResult;
 
 namespace FlightPlanner.Storage
 {
+<<<<<<< HEAD
     public static class FlightStorage
+=======
+    public static class  FlightStorage
+>>>>>>> origin/main
     {
         private static List<Flight> _flights = new List<Flight>();
         private static int _id = 1;
 
+<<<<<<< HEAD
         public static Flight GetById(int id, FlightPlannerDbContext context)
         {
             return _flights.SingleOrDefault(f => f.Id == id);
+=======
+        public static Flight GetById(int id)
+        {
+           return  _flights.SingleOrDefault(f => f.Id == id);
+>>>>>>> origin/main
         }
 
         public static void ClearFlight()
@@ -25,9 +38,15 @@ namespace FlightPlanner.Storage
         public static Flight AddFlight(Flight flight)
         {
             flight.Id = _id;
+<<<<<<< HEAD
             _id++;
             _flights.Add(flight);
             return flight;
+=======
+                _id++;
+                _flights.Add(flight);
+                return flight;
+>>>>>>> origin/main
         }
 
         public static void DeletFlight(int id)
@@ -37,6 +56,7 @@ namespace FlightPlanner.Storage
                 _flights.Remove(flightDelete);
         }
 
+<<<<<<< HEAD
         public static bool Exists(Flight flight, FlightPlannerDbContext context)
         {
             return context.FLights
@@ -50,30 +70,62 @@ namespace FlightPlanner.Storage
         }
 
         public static List<Airport> SearchAirportsByCode(string search, FlightPlannerDbContext context)
+=======
+        public static bool Exists(Flight flight)
+        {
+            return _flights.Any(f => f.ArrivalTime == flight.ArrivalTime
+                                     && f.DepartureTime == flight.DepartureTime
+                                     && f.Carrier == flight.Carrier
+                                     && f.From.AirportCode == flight.From.AirportCode
+                                     && f.To.AirportCode == flight.To.AirportCode);
+        }
+
+        public static List<Airport> SearchAirportsByCode(string search)
+>>>>>>> origin/main
         {
             search = search.ToUpper().Trim();
             List<Airport> airportsCode = new List<Airport>();
 
+<<<<<<< HEAD
             foreach (Airport flight in context.Airports)
             {
                 if (flight.City.ToUpper().Contains(search) ||
                     flight.Country.ToUpper().Contains(search) ||
                     flight.AirportCode.ToUpper().Contains(search))
                     airportsCode.Add(flight);
+=======
+            foreach (Flight flight in _flights)
+            {
+                if (flight.From.City.ToUpper().Contains(search) ||
+                    flight.From.Country.ToUpper().Contains(search) ||
+                    flight.From.AirportCode.ToUpper().Contains(search))
+                    airportsCode.Add(flight.From);
+>>>>>>> origin/main
                 return airportsCode;
             }
+
             return airportsCode;
         }
 
+<<<<<<< HEAD
         public static PageResult SearchFlight(SearchFlightsRequest searchFlightsRequest,FlightPlannerDbContext context)
         {
             var flight = context.FLights
                 .Include(a=> a.To)
                 .Include(a=> a.From)
                 .Where(f => f.From.AirportCode == searchFlightsRequest.From ||
+=======
+        public static PageResult SearchFlight(SearchFlightsRequest searchFlightsRequest)
+        {
+            var flight = _flights.Where(f => f.From.AirportCode == searchFlightsRequest.From ||
+>>>>>>> origin/main
                                              f.To.AirportCode == searchFlightsRequest.To
                                              || f.DepartureTime == searchFlightsRequest.Date).ToList();
             return new PageResult(flight);
         }
+<<<<<<< HEAD
+=======
+
+>>>>>>> origin/main
     }
 }
