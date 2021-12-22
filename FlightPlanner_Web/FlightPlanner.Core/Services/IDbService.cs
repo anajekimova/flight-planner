@@ -7,7 +7,7 @@ namespace FlightPlanner.Core.Services
     {
         IQueryable<T> Query<T>() where T : Entity;
 
-        T GetById<T>(int Id) where T : Entity;
+        T GetById<T>(int id) where T : Entity;
 
         void Create<T>(T entity) where T : Entity;
 

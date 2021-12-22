@@ -1,4 +1,8 @@
-﻿using FlightPlanner.Core.Models;
+﻿using System.Collections.Generic;
+using System.Linq;
+using AutoMapper;
+using FlightPlanner.Core.Dto;
+using FlightPlanner.Core.Models;
 using FlightPlanner.Core.Services;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -10,11 +14,14 @@ namespace FlightPlanner.Web.Controllers
     [ApiController]
     public class AdminApiController : ControllerBase
     {
-        private readonly IEntityService<Flight> _flightService;
-
-        public AdminApiController(IEntityService<Flight> flightService)
+        private readonly IFlightService _flightService;
+        private readonly IMapper _mapper;
+        private readonly IEnumerable<IValidator> _validators;
+        public AdminApiController(IFlightService flightService, IMapper mapper, IEnumerable<IValidator> validators)
         {
             _flightService = flightService;
+            _mapper = mapper;
+            _validators = validators;
         }
 
         [HttpGet]
@@ -23,11 +30,36 @@ namespace FlightPlanner.Web.Controllers
         {
             //lock (locker)
             {
-                var flights = _flightService.GetById(id);
+
+                var flights = _flightService.GetFullFlightById(id);
                 if (flights == null)
                     return NotFound();
 
-                return Ok(id);
+                return Ok(_mapper.Map<FlightResponse>(flights));
+            }
+        }
+
+        [HttpPut]
+        [Route("flights")]
+        public IActionResult PutFlight(FlightRequest request)
+        {
+            // (locker)
+            {
+                //if (!FlightValidation.IsValid(flight))
+                //return BadRequest();
+                if (!_validators.Any(s => s.Validate(request)))
+                    return BadRequest();
+                var flight = _mapper.Map<Flight>(request);
+
+                if (_flightService.Exists(flight))
+                 return Conflict();
+    
+
+                
+
+                _flightService.Create(flight);
+
+                return Created("", _mapper.Map<FlightResponse>(flight));
             }
         }
     }

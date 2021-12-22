@@ -1,9 +1,11 @@
 {
   "version": 2,
-  "dgSpecHash": "POMI9SL+I+7ITujaj1mKBkoHei1ySs4SnFtB+LHHbzj7k7zQBEMvkxI21p0bw2VgxPr04XYR6GVvQ0jNogPWNg==",
+  "dgSpecHash": "lL12O/9sf8IDo1dqL9BA7d31sweyElKZiBL7FMCpLPyLrlpt81rxz3q416DzoEhadhYrX15TbOs9qhX7OcavjQ==",
   "success": true,
   "projectFilePath": "C:\\Users\\Lenovo Yoga\\programming\\Mans\\flight-planner\\FlightPlanner_Web\\FlightPlanner_Web\\FlightPlanner.Web.csproj",
   "expectedPackageFiles": [
+    "C:\\Users\\Lenovo Yoga\\.nuget\\packages\\automapper\\10.1.1\\automapper.10.1.1.nupkg.sha512",
+    "C:\\Users\\Lenovo Yoga\\.nuget\\packages\\automapper.extensions.microsoft.dependencyinjection\\8.1.1\\automapper.extensions.microsoft.dependencyinjection.8.1.1.nupkg.sha512",
     "C:\\Users\\Lenovo Yoga\\.nuget\\packages\\humanizer.core\\2.8.26\\humanizer.core.2.8.26.nupkg.sha512",
     "C:\\Users\\Lenovo Yoga\\.nuget\\packages\\microsoft.csharp\\4.7.0\\microsoft.csharp.4.7.0.nupkg.sha512",
     "C:\\Users\\Lenovo Yoga\\.nuget\\packages\\microsoft.data.sqlclient\\2.0.1\\microsoft.data.sqlclient.2.0.1.nupkg.sha512",
@@ -71,7 +73,7 @@
     "C:\\Users\\Lenovo Yoga\\.nuget\\packages\\system.private.datacontractserialization\\4.3.0\\system.private.datacontractserialization.4.3.0.nupkg.sha512",
     "C:\\Users\\Lenovo Yoga\\.nuget\\packages\\system.private.uri\\4.3.2\\system.private.uri.4.3.2.nupkg.sha512",
     "C:\\Users\\Lenovo Yoga\\.nuget\\packages\\system.reflection\\4.3.0\\system.reflection.4.3.0.nupkg.sha512",
-    "C:\\Users\\Lenovo Yoga\\.nuget\\packages\\system.reflection.emit\\4.3.0\\system.reflection.emit.4.3.0.nupkg.sha512",
+    "C:\\Users\\Lenovo Yoga\\.nuget\\packages\\system.reflection.emit\\4.7.0\\system.reflection.emit.4.7.0.nupkg.sha512",
     "C:\\Users\\Lenovo Yoga\\.nuget\\packages\\system.reflection.emit.ilgeneration\\4.3.0\\system.reflection.emit.ilgeneration.4.3.0.nupkg.sha512",
     "C:\\Users\\Lenovo Yoga\\.nuget\\packages\\system.reflection.emit.lightweight\\4.3.0\\system.reflection.emit.lightweight.4.3.0.nupkg.sha512",
     "C:\\Users\\Lenovo Yoga\\.nuget\\packages\\system.reflection.extensions\\4.3.0\\system.reflection.extensions.4.3.0.nupkg.sha512",

@@ -65,3 +65,5 @@ C:\Users\Lenovo Yoga\programming\Mans\flight-planner\FlightPlanner_Web\FlightPla
 C:\Users\Lenovo Yoga\programming\Mans\flight-planner\FlightPlanner_Web\FlightPlanner_Web\bin\Debug\net5.0\Microsoft.EntityFrameworkCore.Design.dll
 C:\Users\Lenovo Yoga\programming\Mans\flight-planner\FlightPlanner_Web\FlightPlanner_Web\bin\Debug\net5.0\FlightPlanner.Services.dll
 C:\Users\Lenovo Yoga\programming\Mans\flight-planner\FlightPlanner_Web\FlightPlanner_Web\bin\Debug\net5.0\FlightPlanner.Services.pdb
+C:\Users\Lenovo Yoga\programming\Mans\flight-planner\FlightPlanner_Web\FlightPlanner_Web\bin\Debug\net5.0\AutoMapper.dll
+C:\Users\Lenovo Yoga\programming\Mans\flight-planner\FlightPlanner_Web\FlightPlanner_Web\bin\Debug\net5.0\AutoMapper.Extensions.Microsoft.DependencyInjection.dll

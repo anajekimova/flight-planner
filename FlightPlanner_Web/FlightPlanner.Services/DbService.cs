@@ -8,9 +8,9 @@ namespace FlightPlanner.Services
 {
     public class DbService : IDbService
     {
-        protected readonly FlightPlannerDbContext _context;
+        protected readonly IFlightPlannerDbContext _context ;
 
-        public DbService(FlightPlannerDbContext context)
+        public DbService(IFlightPlannerDbContext context)
         {
             _context = context;
         }
@@ -20,9 +20,9 @@ namespace FlightPlanner.Services
             return _context.Set<T>();
         }
 
-        public T GetById<T>(int Id) where T : Entity
+        public T GetById<T>(int id) where T : Entity
         {
-            return _context.Set<T>().SingleOrDefault(e => e.Id == Id);
+            return _context.Set<T>().SingleOrDefault(e => e.Id == id);
         }
 
         public void Create<T>(T entity) where T : Entity

@@ -10,11 +10,14 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using AutoMapper;
 using FlightPlanner.Core.Models;
 using FlightPlanner.Core.Services;
 using FlightPlanner.Date;
 using FlightPlanner.Services;
+using FlightPlanner.Services.Validators;
 using FlightPlanner.Web.Authentication;
+using FlightPlanner.Web.Mapping;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.EntityFrameworkCore;
 
@@ -45,9 +48,23 @@ namespace FlightPlanner_Web
 
             services.AddDbContext<FlightPlannerDbContext>(options =>
                 options.UseSqlServer(Configuration.GetConnectionString("flight-planner")));
+
+            services.AddScoped<IFlightPlannerDbContext, FlightPlannerDbContext>();
             services.AddScoped<IDbService, DbService>();
             services.AddScoped<IEntityService<Flight>, EntityService<Flight>>();
             services.AddScoped<IEntityService<Airport>, EntityService<Airport>>();
+            services.AddScoped<IDbServiceExtended, DbServiceExtended>();
+            services.AddScoped<IFlightService, FlightService>();
+            services.AddScoped<IValidator, AirportCodeValidator>();
+            services.AddScoped<IValidator, AirportCodeEqualityValidator>();
+            services.AddScoped<IValidator, ArriveTimeValidator>();
+            services.AddScoped<IValidator, CarrieValidator>();
+            services.AddScoped<IValidator, DepartureTimeValidator>();
+            services.AddScoped<IValidator, CityValidator>();
+            services.AddScoped<IValidator, TimeFrameValidator>();
+            services.AddScoped<IValidator, CountryValidator>();
+            var cfg = AutoMapperConfiguration.GetConfig();
+            services.AddSingleton(typeof(IMapper), cfg);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -62,7 +79,7 @@ namespace FlightPlanner_Web
 
             app.UseRouting();
 
-            app.UseAuthorization();
+            app.UseAuthentication();
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>

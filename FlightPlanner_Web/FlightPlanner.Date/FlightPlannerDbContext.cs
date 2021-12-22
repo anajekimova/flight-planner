@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace FlightPlanner.Date
 {
-    public class FlightPlannerDbContext : DbContext
+    public class FlightPlannerDbContext : DbContext, IFlightPlannerDbContext
     {
         public FlightPlannerDbContext(DbContextOptions<FlightPlannerDbContext> options)
             : base(options)
@@ -13,6 +13,6 @@ namespace FlightPlanner.Date
 
         public DbSet<Flight> Flights { get; set; }
         public DbSet<Airport> Airports { get; set; }
-
+       
     }
 }
